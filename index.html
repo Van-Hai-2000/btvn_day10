@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h1>Giải phương trình bậc 2</h1>
+        <label for="">Nhập giá trị a, b, c :</label>
+        <input type="number" name="" id="a" />X^2 + <input type="number" id="b" />X +
+        <input type="text" id="c" />
+        <button onclick="GetData()">Đáp án</button>
+        <div id="result"></div>
+        <div id="error"></div>
+      </div>
+    </div>
+
+    <script>
+
+      function GetData() {
+        let a = parseInt( document.getElementById("a").value);
+        let b = parseInt( document.getElementById("b").value);
+        let c = parseInt( document.getElementById("c").value);
+        let x = 0;
+        let y = 0;
+
+        if (a != 0) {
+          if (a + b + c == 0) {
+            x = 1;
+            y = c / a;
+            document.getElementById("result").innerText = "X1 = " + x + "và X2 = " + y;
+          }
+          if (a - b + c == 0) {
+            x = -1;
+            y = -c / a;
+            document.getElementById("result").innerText = "X1 = " + x + "và X2 = " + y;
+          } else
+          {
+            let detla = b*b -4*a*c;
+                if(detla < 0){
+                    document.getElementById("result").innerText = "Phương trình vô nghiệm";
+                }
+                else if(detla == 0 ){
+                    x= -b/2*a;
+                    document.getElementById("result").innerText = "X1 = " + x + "và X2 = " + x;
+                }
+                else{
+                    x= (-b+ Math.sqrt(detla))/2*a;
+                    y = (-b- Math.sqrt(detla))/2*a;
+                    document.getElementById("result").innerText = "X1 = " + x + "và X2 = " + y;
+                }
+          }
+
+
+
+        } else {
+          document.getElementById("error").innerText = "Không phải phương trình bậc two";
+        }
+      }
+    </script>
+  </body>
+</html>
